@@ -1,0 +1,112 @@
+/* ===== 为右侧图表侧栏预留空间，避免遮挡左侧主要内容 ===== */
+body {
+    margin-right: 380px; /* 与 chartSidebar 宽度保持一致（360px + 余量） */
+    box-sizing: border-box;
+}
+
+/* --- Side-by-Side 视图专用的 CSS 样式 --- */
+
+.side-by-side-container {
+    width: 100%;
+    overflow-x: auto; /* 确保超宽时可滚动 */
+}
+
+.diff-table {
+    width: 100%;
+    border-collapse: collapse; /* 消除表格间隙 */
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.diff-table td {
+    padding: 0 8px; /* 减小上下 padding，增加左右 padding */
+    border: none;
+    vertical-align: top; /* 确保内容从顶部对齐 */
+    white-space: pre-wrap; /* 允许文本自动换行 */
+    line-height: 1.4;
+}
+
+/* 行号列 */
+.line-num-A, .line-num-B {
+    width: 30px; 
+    background-color: #f7f7f7;
+    text-align: right;
+    color: #999;
+    border-right: 1px solid #eee;
+    user-select: none; /* 防止行号被选中 */
+}
+
+/* 内容列 */
+.line-content-A, .line-content-B {
+    width: 50%;
+}
+
+/* 删除和添加的行背景色 */
+.diff-removed {
+    background-color: var(--diff-del-bg); /* 浅红背景，表示删除/修改 */
+}
+.diff-added {
+    background-color: var(--diff-ins-bg); /* 浅绿背景，表示添加/修改 */
+}
+
+/* 行内差异的颜色 (继承自之前的定义，但这里再次强调) */
+del {
+    background-color: var(--diff-del-bg); /* softer red */
+    border: 1px solid rgba(200, 80, 80, 0.4);
+    text-decoration: none;
+    color: #7a0000;
+    border-radius: 2px;
+}
+
+ins {
+    background-color: var(--diff-ins-bg); /* softer green */
+    border: 1px solid rgba(80, 160, 80, 0.4);
+    text-decoration: none;
+    color: #004d00;
+    border-radius: 2px;
+}
+
+/* 占位符 (用于对齐的空行) */
+.diff-spacer {
+    color: transparent;
+}
+
+/* 强制性情态词（must / shall） */
+.fw-AUX_MODAL_STRONG {
+    background-color: var(--fw-strong-bg);
+    border: 1px solid rgba(255, 0, 0, 0.35);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+/* 弱情态词（should） */
+.fw-AUX_MODAL_WEAK {
+    background-color: var(--fw-weak-bg);
+    border: 1px solid rgba(255, 165, 0, 0.35);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+/* 许可性情态词（may） */
+.fw-AUX_MODAL_PERMISSION {
+    background-color: var(--fw-permission-bg);
+    border: 1px solid rgba(0, 128, 255, 0.35);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+/* 模糊副词（likely, possibly） */
+.fw-ADV_HEDGING {
+    background-color: var(--fw-hedging-bg);
+    border: 1px solid rgba(0, 0, 255, 0.35);
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+/* 加强语气副词（strictly / strongly） */
+.fw-ADV_INTENSIFIER {
+    background-color: var(--fw-intensifier-bg);
+    border: 1px solid rgba(128, 0, 128, 0.35);
+    padding: 0 2px;
+    border-radius: 3px;
+}
